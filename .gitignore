@@ -11,3 +11,6 @@ wheels/
 
 # Environment variables
 .env
+
+# Environment variables
+venv/
