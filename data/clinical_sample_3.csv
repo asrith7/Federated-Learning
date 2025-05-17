@@ -1,0 +1,11 @@
+patient_id,hemoglobin,white_cell_count,platelets,cholesterol,vitamin_d,diagnosis
+P001,13.5,7000,250000,180,25.4,Healthy
+P002,14.0,8500,280000,200,18.6,Diabetes
+P003,12.1,7600,300000,175,28.1,Healthy
+P004,15.2,8200,220000,210,20.5,Pre-Diabetes
+P005,13.0,7900,270000,190,23.3,Healthy
+P006,14.3,8800,260000,195,19.8,Diabetes
+P007,12.7,7200,240000,170,27.0,Healthy
+P008,15.5,9100,230000,220,17.5,Diabetes
+P009,13.8,8100,290000,185,24.7,Healthy
+P010,14.6,8700,255000,205,21.2,Pre-Diabetes

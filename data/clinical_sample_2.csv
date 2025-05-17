@@ -1,0 +1,11 @@
+trial_id,patient_id,medication,dose_mg,side_effects,recovery_days,effectiveness_score
+T001,P001,DrugA,100,None,14,0.9
+T002,P002,DrugB,150,Nausea,21,0.7
+T003,P003,DrugA,100,Headache,10,0.95
+T004,P004,DrugC,200,Fatigue,18,0.6
+T005,P005,DrugA,100,None,9,0.98
+T006,P006,DrugB,150,Dizziness,22,0.65
+T007,P007,DrugC,200,None,16,0.85
+T008,P008,DrugB,150,Nausea,20,0.68
+T009,P009,DrugA,100,Headache,11,0.93
+T010,P010,DrugC,200,None,17,0.88

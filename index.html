@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🤖 LLM Clinical & Federated Agent Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 60%;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 200px;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    pre {
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🤖 LLM Clinical & Federated Agent Dashboard</h1>
+
+    <div class="section">
+      <h2>🧪 Clinical Trial Assistant</h2>
+      <form id="clinicalForm">
+        <input type="text" id="clinicalInput" placeholder="Ask a medical question..." required />
+        <button type="submit">Ask Agent</button>
+      </form>
+      <pre id="clinicalResponse">Response will appear here...</pre>
+    </div>
+
+    <div class="section">
+      <h2>📊 Federated Learning Agent</h2>
+      <button id="federatedBtn">Analyze Clinical Data</button>
+      <pre id="federatedResponse">Response will appear here...</pre>
+    </div>
+  </div>
+
+  <script>
+    // Clinical Agent
+    document.getElementById('clinicalForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const question = document.getElementById('clinicalInput').value;
+      const resBox = document.getElementById('clinicalResponse');
+      resBox.textContent = "Loading...";
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/agent/clinical?question=${encodeURIComponent(question)}`);
+        const data = await res.json();
+        resBox.textContent = data.response;
+      } catch (err) {
+        resBox.textContent = "❌ Error: " + err;
+      }
+    });
+
+    // Federated Agent
+    document.getElementById('federatedBtn').addEventListener('click', async function() {
+      const resBox = document.getElementById('federatedResponse');
+      resBox.textContent = "Analyzing...";
+      try {
+        const res = await fetch("http://127.0.0.1:8000/agent/federated");
+        const data = await res.json();
+        resBox.textContent = data.response;
+      } catch (err) {
+        resBox.textContent = "❌ Error: " + err;
+      }
+    });
+  </script>
+
+</body>
+</html>

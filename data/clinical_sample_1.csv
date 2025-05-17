@@ -1,0 +1,11 @@
+patient_id,name,age,gender,blood_pressure,glucose_level,outcome
+P001,Alice,45,F,120,85,1
+P002,Bob,54,M,130,90,0
+P003,Cathy,37,F,110,95,1
+P004,David,60,M,135,80,0
+P005,Eva,29,F,118,92,1
+P006,Frank,51,M,125,89,0
+P007,Grace,44,F,122,87,1
+P008,Henry,67,M,140,105,0
+P009,Ivy,33,F,115,99,1
+P010,Jack,58,M,138,88,0

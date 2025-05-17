@@ -1,13 +1,28 @@
-from fastapi import FastAPI
-from clinical_agent import ClinicalDataAgent
+from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
+from agents import medical_clinical_agent, federated_learning_agent
 
 app = FastAPI()
 
+# ✅ Add this CORS configuration:
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["http://127.0.0.1:8001"] for more security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")
 def root():
-    return {"message": "LLM Federated Clinical Agent is running"}
+    return {"message": "Unified LLM Agent for Clinical Trials and Federated Learning"}
 
-@app.get("/analyze")
-def analyze():
-    agent = ClinicalDataAgent(["data/hospital_1.csv", "data/hospital_2.csv"])
-    return agent.analyze_data()
+@app.get("/agent/clinical")
+def get_clinical_trial_help(question: str = Query(...)):
+    result = medical_clinical_agent(question)
+    return {"response": result}
+
+@app.get("/agent/federated")
+def get_federated_insights():
+    result = federated_learning_agent()
+    return {"response": result}
